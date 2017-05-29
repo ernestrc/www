@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ernest's Home Page</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-52113963-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+		<meta name="description" content="Ernest Romero Climent ernestrc Home Page" />
+	</head>
+	<body>
+		<div id="Header">
+			<table width="100%" cellpadding="0">
+				<tr>
+					<td>Ernest's Home Page</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="Menu">
+			<hr/>
+			<a href="/" title="My home page">Home Page</a><br />
+			<a href="about.html" title="About Ernest">About</a><br />
+			<a href="gpg.html">GPG Public Key</a><br />
+			<a href="mailto:ernest_at_unstable_dot_build">Email me</a><br />
+			<hr/>
+		</div>
+
+		<div id="Content">
+			<p>Welcome! I hope you don't miss the hundreds (or sometimes thousands) of KBs of JavaScript we tend to download every time we visit a page <sup><a href="http://www.websiteoptimization.com/speed/tweak/average-web-page/">[1]</a></sup>.
+			I wrote this Website on an Intel® Core™ m3-6Y30 CPU @ 0.90GHz and I'm serving it from an even slower box,
+			running an ARMv7 Processor rev 5 @ 0.90GHz so I didn't have much of a choice!
+			</p>
+			<p>Nevermind, I probably did. The truth is, I miss the Old Wide Web. Plus, isn't it also kinder to your eyes?
+			</p>
+
+			</br>
+			<h2>What I'm up to these days</h2>
+			<ul id=up-to></ul>
+		</div>
+		<script>
+			var upTo = document.getElementById("up-to");
+			var TOTAL_PAGES = 10;
+			var DOTFILES = 17801263;
+			var page = 0;
+			var pushes = {};
+
+			function renderNext() {
+				while (upTo.firstChild) {
+					upTo.removeChild(upTo.firstChild);
+				}
+				var repoIds = Object.keys(pushes);
+
+				for (var i = 0, len = repoIds.length; i < len; i++) {
+					var repo = pushes[repoIds[i]];
+					var li = document.createElement('LI');
+					var b = document.createElement('B');
+					var a = document.createElement('A');
+					var c = document.createElement('UL');
+					a.href = repo.url;
+					b.innerHTML = repo.name;
+					a.appendChild(b);
+					li.appendChild(a);
+
+					var commits = Object.keys(repo.commits);
+					li.appendChild(document.createTextNode(':\tContributed ' + commits.length + ' times'));
+
+					for (var j = 0, len2 = commits.length; j < len2; j++) {
+						var sha = commits[j];
+						var commit = repo.commits[sha];
+						var l = document.createElement('LI');
+						var _b = document.createElement('B');
+						var _a = document.createElement('A');
+						_a.href = 'https://github.com/' + repo.name + '/commit/' + sha;
+						_a.appendChild(document.createTextNode(sha.slice(0, 7)));
+						_b.appendChild(_a);
+						l.appendChild(_b);
+						l.appendChild(document.createTextNode(': ' + commit.message));
+						c.appendChild(l); 
+					}
+
+					li.appendChild(c);
+					upTo.appendChild(li);
+				}
+			}
+
+			function parseNext(response) {
+				var data = JSON.parse(response);
+				for (var i = 0, len = data.length; i < len; i++) {
+					var obj = data[i];
+					var repoId = obj.repo.id;
+					if (repoId === DOTFILES)
+						continue;
+					switch(obj.type) {
+						case 'PushEvent':
+							if (!pushes[repoId]) {
+								pushes[repoId] = {
+									name: obj.repo.name,
+									url: 'https://github.com/' + obj.repo.name,
+									commits: {},
+								};
+							}
+							var commits = obj.payload.commits;
+							for (var j = 0, len2 = commits.length; j < len2; j++) {
+								var commit = commits[j];
+								if (!pushes[repoId].commits[commit.sha]) {
+									pushes[repoId].commits[commit.sha] = {
+										message: commit.message
+									}
+								}
+							}
+							break;
+						default:
+							console.log(obj);
+					}
+				}
+			}
+
+			function fetchNext() {
+				if (++page <= 10) {
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("GET", "https://api.github.com/users/ernestrc/events", true);
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							parseNext(xhttp.response);
+							renderNext();
+							fetchNext();
+						}
+					}
+					xhttp.send('page=' + page);
+				}
+			}
+			fetchNext();
+		</script>
+	</body>
+</html>
