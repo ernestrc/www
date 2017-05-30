@@ -28,12 +28,19 @@
 		</div>
 
 		<div id="content">
-			<p>Welcome! I hope you don't miss the hundreds (or sometimes thousands) of KBs of assets we tend to download every time we visit a page <sup><a href="http://www.websiteoptimization.com/speed/tweak/average-web-page/">[1]</a></sup>.
-			I wrote this website on an Intel Core m3-6Y30 CPU @ 0.90GHz and I'm serving it from an even slower box,
-			running an ARMv7 Processor rev 5 @ 0.90GHz so I didn't have a choice but make it lightweight.
-			</p>
-			<p>Nevermind, I probably did. The truth is, I miss the Old Wide Web. Besides, isn't it also kinder to your eyes?
-			</p><br />
+			<h2>What I'm up to these days</h2>
+			<div id=pub-contrib></div>
+			<br />
+			<div id=pub-create></div>
 		</div>
+		<script src="contrib.js"></script>
+		<script>
+			if (document.readyState === "complete" ||
+			(document.readyState !== "loading" && !document.documentElement.doScroll)) {
+			  loadContrib();
+			} else {
+			  document.addEventListener("DOMContentLoaded", loadContrib);
+			}
+		</script>
 	</body>
 </html>

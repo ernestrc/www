@@ -42,53 +42,33 @@ a:hover {
 	background-color:#ccc;
 }
 
-#Header {
+#header {
+	padding-left: 20px;
+	padding-top: 4px;
 	font-weight:600;
-	font-size: x-large;	/* should be same as an h1 header */
+	font-size: x-large;
 	margin:20px 0 10px 0;
-	padding:0 0 2.0ex 20px;
 	border-style:solid;
 	border-color:black;
 	border-width:1px 0;
 	background-color:#eee;
 }
 
-body>#Header {
-	height:14px;
-}
-
-#Content {
+#content {
 	margin:0 50px 50px 11em;
 	padding:10px;
 }
 
-#Menu {
+#menu {
 	position:absolute;
 	top:80px;
 	left:20px;
 	width:120px;
 	padding:0.5em;
 	background-color:#eee;
-	border:1px dashed #999;
+	border-style:solid;
+	border-color:black;
+	border-width:1px 0;
 	voice-family:inherit;
 	width:8em;
-}
-
-.centered {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.right {
-	float:right;
-	margin:0px;
-}
-
-.notebox {
-	background-color:#eee;
-	border:1px dashed #999;
-	margin: 15px;
-	font-size:small;
-	text-indent: 0;
 }
