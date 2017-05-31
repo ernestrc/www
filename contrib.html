@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Ernest's Home Page</title>
+		<title>Ernest's open-source software</title>
 		<link rel="stylesheet" href="style.css" type="text/css" />
 		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 			ga('create', 'UA-52113963-1', 'auto');
 			ga('send', 'pageview');
 		</script>
-		<meta name="description" content="Ernest Romero Climent ernestrc Home Page" />
+		<meta name="description" content="Ernest Romero Climent ernestrc software contributions" />
 	</head>
 	<body>
 		<div id="header">
 			<table width="100%" cellpadding="0">
 				<tr>
-					<td>Ernest's Home Page</td>
+					<td>open-source software</td>
 				</tr>
 			</table>
 		</div>
@@ -28,19 +28,31 @@
 		</div>
 
 		<div id="content">
-			<h2>What I'm up to these days</h2>
-			<div id=pub-contrib></div>
+			<ul>
+				<li><b><a href="https://github.com/xarxa6">sonic</a></b>
+					<p>ODBC/JDBC are antiquated and not designed for streaming large datasets. Sonic is a modern and simple data querying protocol to stream datasets over an arbitrary transport.</p>
+				</li>
+				<li><b><a href="https://github.com/xarxa6/sonicd">sonicd</a></b>
+					<p>Gateway that abstracts over common data source connectors to provide sonic endpoints over WebSockets or over plain TCP</p>
+				</li>
+				<li><b><a href="https://github.com/ernestrc/tylog">tylog</a></b>
+					<p>Thin wrapper around SLF4J's facade to provide compile time checks and a typed logging API</p>
+				</li>
+			</ul>
 			<br />
-			<div id=pub-create></div>
+			<h2>Latest events</h2>
+			<ul id=pub-create></ul>
+			<ul id=pub-fork></ul>
+			<ul id=pub-contrib></ul>
 		</div>
 		<script src="contrib.js"></script>
 		<script>
-			if (document.readyState === "complete" ||
-			(document.readyState !== "loading" && !document.documentElement.doScroll)) {
-			  loadContrib();
-			} else {
-			  document.addEventListener("DOMContentLoaded", loadContrib);
-			}
+if (document.readyState === "complete" ||
+	(document.readyState !== "loading" && !document.documentElement.doScroll)) {
+	loadContrib();
+} else {
+	document.addEventListener("DOMContentLoaded", loadContrib);
+}
 		</script>
 	</body>
 </html>
