@@ -24,7 +24,7 @@
 			<a href="about.html" title="About Ernest">About</a><br />
 			<a href="contrib.html" title="Software">Software</a><br />
 			<a href="gpg.html">PGP Public Key</a><br />
-			<a href="mailto:ernest_at_unstable_dot_build">Email me</a><br />
+			<a href="mailto:ernest_!at!_unstable_dot_build">Email me</a><br />
 		</div>
 
 		<div id="content">
@@ -36,19 +36,9 @@
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					var data = JSON.parse(xhttp.response);
-					var keys = Object.keys(data);
-					var list = document.getElementById("about");
-
-					for (var i = 0, len = keys.length; i < len; i++) {
-						var key = keys[i];
-						var value = data[key];
-						var li = document.createElement('LI');
-						var b = document.createElement('B');
-						b.innerHTML = key;
-						li.appendChild(b);
-						li.appendChild(document.createTextNode(':\t' + value));
-						list.appendChild(li);
-					}
+					var text = document.getElementById("about");
+					var bioText = data.bio;
+					text.appendChild(document.createTextNode(bioText));
 				}
 			};
 			xhttp.send();
