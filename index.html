@@ -24,7 +24,6 @@
 			<a href="/" title="My home page">Home Page</a><br />
 			<a href="about.html" title="About Ernest">About</a><br />
 			<a href="contrib.html" title="Open Source Software">Software</a><br />
-			<a href="photo.html" title="Photography">Photography</a><br />
 		</div>
 
 		<div id="content">
@@ -38,18 +37,13 @@
 			<ul id=pub-create></ul>
 			<ul id=pub-fork></ul>
 			<ul id=pub-contrib></ul>
-			<br /><h2>Latest Photos</h2><br />
-			<ul id=pub-photos></ul>
 			<script src="contrib.js"></script>
-			<script src="photo.js"></script>
 			<script>
 				if (document.readyState === "complete" ||
 					(document.readyState !== "loading" && !document.documentElement.doScroll)) {
 					loadContrib();
-					loadPhotos();
 				} else {
 					document.addEventListener("DOMContentLoaded", loadContrib);
-					document.addEventListener("DOMContentLoaded", loadPhotos);
 				}
 			</script>
 		</div>
