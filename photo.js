@@ -4,6 +4,7 @@ function loadPhotos() { // eslint-disable-line no-unused-vars
 	var posts = [
 		'https://www.instagram.com/p/COdsaDBDeTx/',
 	];
+	var postElements = [];
 
 	function parseNext(response) {
 		var data = JSON.parse(response);
@@ -11,9 +12,10 @@ function loadPhotos() { // eslint-disable-line no-unused-vars
 	}
 
 	function appendLi(parent, html) {
-		var li = document.createElement('LI');
+		var li = document.createElement('DIV');
 		li.innerHTML = html;
 		parent.appendChild(li);
+		postElements.push(li);
 	}
 
 
@@ -33,10 +35,17 @@ function loadPhotos() { // eslint-disable-line no-unused-vars
 		xhttp.send();
 	}
 
-	instgrm.Embeds.process();
-
 	for (var i = 0; i < posts.length; i++) {
 		fetchPost(posts[i]);
 	}
-}
 
+	var observer = new MutationObserver(function() {
+		var rendered = postElements.reduce((res, el) => res && document.contains(el), true);
+		if (postElements.length == posts.length && rendered) {
+			observer.disconnect();
+			instgrm.Embeds.process();
+		}
+	});
+	
+	observer.observe(document, {attributes: false, childList: true, characterData: false, subtree:true});
+}
