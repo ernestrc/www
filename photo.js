@@ -3,6 +3,9 @@ function loadPhotos() { // eslint-disable-line no-unused-vars
 	var api_url = 'https://graph.facebook.com/v10.0/instagram_oembed?access_token=145798694237169|0a3678ae40d59df4563f67a03adbdb50&omitscript=true';
 	var posts = [
 		'https://www.instagram.com/p/COdsaDBDeTx/',
+		'https://www.instagram.com/p/CDMusEhD0YF/',
+		'https://www.instagram.com/p/CCUmF9Ojfnz/',
+		'https://www.instagram.com/p/CORDAC0jrI7/',
 	];
 	var postElements = [];
 
