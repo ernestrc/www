@@ -23,6 +23,7 @@
 			<a href="/" title="My home page">Home Page</a><br />
 			<a href="about.html" title="About Ernest">About</a><br />
 			<a href="contrib.html" title="Software">Software</a><br />
+			<a href="photo.html" title="Photography">Photography</a><br />
 			<a href="pubkey.gpg">PGP Public Key</a><br />
 			<a href="mailto:ernest_at_unstable_dot_build">Email me</a><br />
 		</div>
@@ -67,12 +68,12 @@
 		</div>
 		<script src="contrib.js"></script>
 		<script>
-if (document.readyState === "complete" ||
-	(document.readyState !== "loading" && !document.documentElement.doScroll)) {
-	loadContrib();
-} else {
-	document.addEventListener("DOMContentLoaded", loadContrib);
-}
+			if (document.readyState === "complete" ||
+				(document.readyState !== "loading" && !document.documentElement.doScroll)) {
+				loadContrib();
+			} else {
+				document.addEventListener("DOMContentLoaded", loadContrib);
+			}
 		</script>
 	</body>
 </html>
