@@ -114,11 +114,11 @@ function loadContrib() { // eslint-disable-line no-unused-vars
 						};
 						break;
 					default:
-						console.log(obj.payload);
+						//console.log(obj.payload);
 				}
 				break;
 			default:
-				console.log(obj);
+				//console.log(obj);
 		}
 	}
 
