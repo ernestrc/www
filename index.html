@@ -8,6 +8,7 @@
 			ga('create', 'UA-52113963-1', 'auto');
 			ga('send', 'pageview');
 		</script>
+		<script src="//www.instagram.com/embed.js"></script>
 		<meta name="description" content="Ernest Romero Climent ernestrc Home Page" />
 	</head>
 	<body>
@@ -37,13 +38,18 @@
 			<ul id=pub-create></ul>
 			<ul id=pub-fork></ul>
 			<ul id=pub-contrib></ul>
+			<br /><h2>Latest Photos</h2><br />
+			<ul id=pub-photos></ul>
 			<script src="contrib.js"></script>
+			<script src="photo.js"></script>
 			<script>
 				if (document.readyState === "complete" ||
 					(document.readyState !== "loading" && !document.documentElement.doScroll)) {
 					loadContrib();
+					loadPhotos();
 				} else {
 					document.addEventListener("DOMContentLoaded", loadContrib);
+					document.addEventListener("DOMContentLoaded", loadPhotos);
 				}
 			</script>
 		</div>
