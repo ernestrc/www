@@ -6,7 +6,7 @@ body {
 	margin:0;
 	padding:0;
 	font-family: helvetica, sans-serif;
-	font-size: 15px;
+	font-size: small;
 	font-style: normal;
 	font-weight: 300;
 	color:#333;
@@ -40,13 +40,13 @@ a {
 	text-decoration:none;
 	font-family: helvetica, sans-serif;
 	color: black;
-	font-size: 17px;
+	font-size: small;
 	font-style: normal;
 	font-weight: 600;
 }
 
 body sup a {
-	font-size: 9px;
+	font-size: xx-small;
 	color: red;
 }
 
